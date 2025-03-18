@@ -130,3 +130,30 @@ function findAllDuplicates(array){
 // console.log(findAllDuplicates([4,3,2,7,8,2,3,1])) // array with 2 and 3
 // console.log(findAllDuplicates([4, 3, 2, 1, 0])) // []
 // console.log(findAllDuplicates([4, 3, 2, 1, 0, 1, 2, 3])) // array with 3, 2, and 1
+
+function averagePair(array, targetAvg){
+  // add whatever parameters you deem necessary - good luck!
+  let i = 0;
+  let j = array.length - 1;
+  while (i < j) {
+    let currAvg = (array[i] + array[j]) / 2
+    if(currAvg < targetAvg) i++;
+    if(currAvg > targetAvg) j--;
+    if(currAvg === targetAvg) return true;
+  }
+  return false;
+}
+
+// console.log(averagePair([1,2,3],2.5)) // true
+// console.log(averagePair([1,3,3,5,6,7,10,12,19],8)) // true
+// console.log(averagePair([-1,0,3,4,5,6], 4.1)) // false
+// console.log(averagePair([],4)) // false
+
+function isSubsequence(sub, full) {
+  // good luck. Add any arguments you deem necessary.
+}
+
+console.log(isSubsequence('hello', 'hello world')); // true
+console.log(isSubsequence('sing', 'sting')); // true
+console.log(isSubsequence('abc', 'abracadabra')); // true
+console.log(isSubsequence('abc', 'acb')); // false (order matters)
