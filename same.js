@@ -114,3 +114,19 @@ function constructNote(message, letters){
 // console.log(constructNote('abc', 'dcba')) // true
 // console.log(constructNote('aabbcc', 'bcabcaddff')) // true
 
+function findAllDuplicates(array){
+  // add whatever parameters you deem necessary - good luck!
+  let count = {};
+  let result = [];
+  for(let digit of array) {
+    count[digit] = (count[digit] || 0) + 1;
+  }
+  for(let digit in count) {
+    if (count[digit] > 1) result.push(parseInt(digit))
+  }
+  return result;
+}
+
+// console.log(findAllDuplicates([4,3,2,7,8,2,3,1])) // array with 2 and 3
+// console.log(findAllDuplicates([4, 3, 2, 1, 0])) // []
+// console.log(findAllDuplicates([4, 3, 2, 1, 0, 1, 2, 3])) // array with 3, 2, and 1
