@@ -84,3 +84,17 @@ return Object.values(count).every(freq => freq === 0);
 // console.log(sameFrequency(34,14)) // false
 // console.log(sameFrequency(3589578, 5879385)) // true
 // console.log(sameFrequency(22,222)) // false
+
+function areThereDuplicates(...args) {
+  // good luck. (supply any arguments you deem necessary.)
+  let count = {};
+  for(let arg of args) {
+    count[arg] = (count[arg]|| 0) + 1;
+  }
+  return Object.values(count).some(value => value > 1)
+}
+
+// console.log(areThereDuplicates(1, 2, 3)) // false
+// console.log(areThereDuplicates(1, 2, 2)) // true 
+// console.log(areThereDuplicates('a', 'b', 'c', 'a')) // true 
+
