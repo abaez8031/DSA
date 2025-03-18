@@ -137,9 +137,9 @@ function averagePair(array, targetAvg){
   let j = array.length - 1;
   while (i < j) {
     let currAvg = (array[i] + array[j]) / 2
+    if(currAvg === targetAvg) return true;
     if(currAvg < targetAvg) i++;
     if(currAvg > targetAvg) j--;
-    if(currAvg === targetAvg) return true;
   }
   return false;
 }
@@ -163,7 +163,30 @@ function isSubsequence(sub, full) {
   return false;
 }
 
-console.log(isSubsequence('hello', 'hello world')); // true
-console.log(isSubsequence('sing', 'sting')); // true
-console.log(isSubsequence('abc', 'abracadabra')); // true
-console.log(isSubsequence('abc', 'acb')); // false (order matters)
+// console.log(isSubsequence('hello', 'hello world')); // true
+// console.log(isSubsequence('sing', 'sting')); // true
+// console.log(isSubsequence('abc', 'abracadabra')); // true
+// console.log(isSubsequence('abc', 'acb')); // false (order matters)
+
+function findPair(array, n) {
+  let count = {};
+  for(let num of array) {
+      count[num] = (count[num] || 0) + 1;
+  }
+  for(let num in count) {
+      let complement = n + parseInt(num);
+      if(count[complement] > 0) return true;
+  }
+  return false;
+}
+
+console.log(findPair([6,1,4,10,2,4], 2)) // true
+console.log(findPair([8,6,2,4,1,0,2,5,13],1)) // true
+console.log(findPair([4,-2,3,10],-6)) // true
+console.log(findPair([6,1,4,10,2,4], 22)) // false
+console.log(findPair([], 0)) // false
+console.log(findPair([5,5], 0)) // true
+console.log(findPair([-4,4], -8)) // true
+console.log(findPair([-4,4], 8)) // true
+console.log(findPair([1,3,4,6],-2)) // true
+console.log(findPair([0,1,3,4,6],-2)) // true
