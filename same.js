@@ -151,6 +151,16 @@ function averagePair(array, targetAvg){
 
 function isSubsequence(sub, full) {
   // good luck. Add any arguments you deem necessary.
+  let i = 0;
+  let j = 0;
+  while(j <= full.length) {
+    if(i === sub.length) return true;
+    let fullChar = full[j];
+    let subChar = sub[i];
+    if(subChar === fullChar) i++
+    j++
+  }
+  return false;
 }
 
 console.log(isSubsequence('hello', 'hello world')); // true
