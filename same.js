@@ -98,3 +98,19 @@ function areThereDuplicates(...args) {
 // console.log(areThereDuplicates(1, 2, 2)) // true 
 // console.log(areThereDuplicates('a', 'b', 'c', 'a')) // true 
 
+function constructNote(message, letters){
+  // add whatever parameters you deem necessary - good luck!
+  let count = {};
+  for(let char of message) {
+    count[char] = (count[char] || 0) + 1;
+  }
+  for(let char of letters) {
+    count[char] = (count[char] || 0) - 1;
+  }
+  return Object.values(count).every(val => val <= 0)
+}
+
+// console.log(constructNote('aa', 'abc')) // false
+// console.log(constructNote('abc', 'dcba')) // true
+// console.log(constructNote('aabbcc', 'bcabcaddff')) // true
+
