@@ -1,40 +1,40 @@
-// function same(arr1, arr2) {
-//   if (arr1.length !== arr2.length) return false;
-//   let count1 = {};
-//   let count2 = {};
-//   for(let num of arr1) {
-//     count1[num] = (count1[num] || 0) + 1;
-//   }
-//   for(let num of arr2) {
-//     count2[num] = (count2[num] || 0) + 1
-//   }
-//   for(let key in count1) {
-//     let squared = key ** 2;
-//     if(!squared in count2) return false;
-//     if(count1[key] !== count2[squared]) return false;  
-//   }
-//   return true;
-// }
+function same(arr1, arr2) {
+  if (arr1.length !== arr2.length) return false;
+  let count1 = {};
+  let count2 = {};
+  for(let num of arr1) {
+    count1[num] = (count1[num] || 0) + 1;
+  }
+  for(let num of arr2) {
+    count2[num] = (count2[num] || 0) + 1
+  }
+  for(let key in count1) {
+    let squared = key ** 2;
+    if(!squared in count2) return false;
+    if(count1[key] !== count2[squared]) return false;  
+  }
+  return true;
+}
 
 // console.log(same([1,2,3,4], [9,4,16,1]));
 // console.log(same([5,2,3,4], [9,4,16,25]));
 // console.log(same([1,3,5,2], [1,1,9,25]));
 
-// function anagrams(str1, str2) {
-//   if (str1.length !== str2.length) return false;
-//   let count1 = {};
-//   let count2 = {};
-//   for(let i = 0; i < str1.length; i++) {
-//     let char1 = str1[i];
-//     let char2 = str2[i];
-//     count1[char1] = (count1[char1] || 0) + 1
-//     count2[char2] = (count2[char2] || 0) + 1
-//   }
-//   for(key in count1) {
-//     if (count1[key] !== count2[key]) return false;
-//   }
-//   return true;
-// }
+function anagrams(str1, str2) {
+  if (str1.length !== str2.length) return false;
+  let count1 = {};
+  let count2 = {};
+  for(let i = 0; i < str1.length; i++) {
+    let char1 = str1[i];
+    let char2 = str2[i];
+    count1[char1] = (count1[char1] || 0) + 1
+    count2[char2] = (count2[char2] || 0) + 1
+  }
+  for(key in count1) {
+    if (count1[key] !== count2[key]) return false;
+  }
+  return true;
+}
 
 // console.log(anagrams(" ", " "))
 // console.log(anagrams("aaz", "zza"))
@@ -59,8 +59,28 @@ function maxSubarraySum(array, n) {
   return maxSum;
 }
 
-console.log(maxSubarraySum([1,2,5,2,8,1,5], 2))
-console.log(maxSubarraySum([1,2,5,2,8,1,5], 4))
-console.log(maxSubarraySum([4,2,1,6], 1))
-console.log(maxSubarraySum([4,2,1,6,2], 4))
-console.log(maxSubarraySum([], 4))
+// console.log(maxSubarraySum([1,2,5,2,8,1,5], 2))
+// console.log(maxSubarraySum([1,2,5,2,8,1,5], 4))
+// console.log(maxSubarraySum([4,2,1,6], 1))
+// console.log(maxSubarraySum([4,2,1,6,2], 4))
+// console.log(maxSubarraySum([], 4))
+
+function sameFrequency(num1, num2){
+  let str1 = num1.toString();
+  let str2 = num2.toString();
+  if(str1.length !== str2.length) return false;
+  let count = {};
+// good luck. Add any arguments you deem necessary.
+for(let i = 0; i < str1.length; i++) {
+    let char1 = str1[i];
+    let char2 = str2[i];
+    count[char1] = (count[char1] || 0) + 1;
+    count[char2] = (count[char2] || 0) - 1;
+}
+return Object.values(count).every(freq => freq === 0);
+}
+
+// console.log(sameFrequency(182,281)) // true
+// console.log(sameFrequency(34,14)) // false
+// console.log(sameFrequency(3589578, 5879385)) // true
+// console.log(sameFrequency(22,222)) // false
