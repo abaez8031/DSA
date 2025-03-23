@@ -180,6 +180,22 @@ function findPair(array, n) {
   return false;
 }
 
+function findPair(array, n) {
+  let sorted = array.sort((a,b) => a - b);
+  let i = 0;
+  let j = 1;
+  while(i < array.length && j < array.length) {
+    if(Math.abs(array[i] - array[j]) === Math.abs(n)) return true;
+    if(Math.abs(array[i] - array[j]) < Math.abs(n)) {
+      j++;
+    }
+    if(Math.abs(array[i] - array[j]) > Math.abs(n)) {
+      i++;
+    }
+  }
+  return false;
+}
+
 // console.log(findPair([6,1,4,10,2,4], 2)) // true
 // console.log(findPair([8,6,2,4,1,0,2,5,13],1)) // true
 // console.log(findPair([4,-2,3,10],-6)) // true
